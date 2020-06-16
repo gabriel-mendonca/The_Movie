@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EUk-fX-nma">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search-->
+        <scene sceneID="nhi-5n-XXE">
+            <objects>
+                <viewController id="EUk-fX-nma" customClass="MovieSearchViewController" customModule="The_Movie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6oc-wb-28t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite o nome do filme" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lou-OZ-N4b">
+                                <rect key="frame" x="20" y="59" width="324" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="aWF-iS-dXz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50X-OL-kHx">
+                                <rect key="frame" x="354" y="59" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="TeE-Dc-lWw"/>
+                                    <constraint firstAttribute="height" constant="40" id="sTw-Wr-shK"/>
+                                </constraints>
+                                <state key="normal" image="magnifyingglass" catalog="system"/>
+                                <connections>
+                                    <action selector="searchFor:" destination="EUk-fX-nma" eventType="touchUpInside" id="HEt-p0-3Dr"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CkT-6k-Gic">
+                                <rect key="frame" x="0.0" y="119" width="414" height="694"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="0o0-lx-1b6">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="50X-OL-kHx" firstAttribute="top" secondItem="sX4-WP-9tD" secondAttribute="top" constant="15" id="63V-jn-u5n"/>
+                            <constraint firstItem="Lou-OZ-N4b" firstAttribute="leading" secondItem="sX4-WP-9tD" secondAttribute="leading" constant="20" id="856-bc-FA6"/>
+                            <constraint firstItem="sX4-WP-9tD" firstAttribute="trailing" secondItem="50X-OL-kHx" secondAttribute="trailing" constant="20" id="DM6-au-tN8"/>
+                            <constraint firstItem="Lou-OZ-N4b" firstAttribute="top" secondItem="sX4-WP-9tD" secondAttribute="top" constant="15" id="Gtx-rN-uDT"/>
+                            <constraint firstItem="sX4-WP-9tD" firstAttribute="trailing" secondItem="CkT-6k-Gic" secondAttribute="trailing" id="Lsg-ay-OdJ"/>
+                            <constraint firstItem="CkT-6k-Gic" firstAttribute="top" secondItem="Lou-OZ-N4b" secondAttribute="bottom" constant="15" id="Se3-7I-zDz"/>
+                            <constraint firstItem="CkT-6k-Gic" firstAttribute="leading" secondItem="sX4-WP-9tD" secondAttribute="leading" id="pOT-Cx-4uU"/>
+                            <constraint firstItem="sX4-WP-9tD" firstAttribute="bottom" secondItem="CkT-6k-Gic" secondAttribute="bottom" id="r7C-N5-A2D"/>
+                            <constraint firstItem="50X-OL-kHx" firstAttribute="leading" secondItem="Lou-OZ-N4b" secondAttribute="trailing" constant="10" id="v8W-if-Qea"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sX4-WP-9tD"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="XfG-XV-GCg">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionViewSearch" destination="CkT-6k-Gic" id="5dW-fB-qhu"/>
+                        <outlet property="search" destination="50X-OL-kHx" id="kny-Qo-7Kt"/>
+                        <outlet property="titleTable" destination="Lou-OZ-N4b" id="f22-gE-pX1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="upb-zB-laY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="91" y="77"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="search" width="16" height="16"/>
+    </resources>
+</document>

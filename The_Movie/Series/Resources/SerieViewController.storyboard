@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3pk-tH-Ikj">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Séries-->
+        <scene sceneID="YtB-Yl-Vy4">
+            <objects>
+                <viewController id="3pk-tH-Ikj" customClass="SerieViewController" customModule="The_Movie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xga-QS-ajE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G0s-gt-RhC">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JuG-m7-Tmh" firstAttribute="bottom" secondItem="G0s-gt-RhC" secondAttribute="bottom" id="6Px-nL-KBj"/>
+                            <constraint firstItem="G0s-gt-RhC" firstAttribute="top" secondItem="JuG-m7-Tmh" secondAttribute="top" id="BhR-R8-1ad"/>
+                            <constraint firstItem="JuG-m7-Tmh" firstAttribute="trailing" secondItem="G0s-gt-RhC" secondAttribute="trailing" id="FCZ-0e-qVD"/>
+                            <constraint firstItem="G0s-gt-RhC" firstAttribute="leading" secondItem="JuG-m7-Tmh" secondAttribute="leading" id="v3Z-4b-AKO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JuG-m7-Tmh"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Séries" image="tv.fill" catalog="system" id="3og-EX-eem"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableViewSerie" destination="G0s-gt-RhC" id="S75-td-xtW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4UV-Js-D9i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="154" y="70"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tv.fill" catalog="system" width="128" height="93"/>
+    </resources>
+</document>

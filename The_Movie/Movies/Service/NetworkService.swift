@@ -20,10 +20,9 @@ enum resultNameGenres {
 }
 
 enum resultMovieDescription {
-    case sucess
-    case failure
+    case sucess(movie: MovieDescription?)
+    case failure(error: Error)
 }
-
 enum Error {
     case parseError(error: String)
 }
@@ -31,7 +30,7 @@ enum Error {
 protocol TheMdbAPI {
     func fetchGenreMovies(id: Int, completion: @escaping( _ result: resultGenreMovie) -> Void)
     func fetchNameGenres(completion: @escaping( _ result: resultNameGenres ) -> Void)
-    func fetchMovieDescription(completion: @escaping( _ result: resultMovieDescription) -> Void)
+    func fetchMovieDescription(id: Int,completion: @escaping( _ result: resultMovieDescription) -> Void)
 }
 
 struct TheMDBAPIImpl: TheMdbAPI {
@@ -101,9 +100,33 @@ struct TheMDBAPIImpl: TheMdbAPI {
         
         
     }
-    
-    func fetchMovieDescription(completion: @escaping( _ result: resultMovieDescription) -> Void) {
-        
-        
-    }
+    func fetchMovieDescription(id: Int, completion: @escaping( _ result: resultMovieDescription) -> Void) {
+          var movie: MovieDescription?
+          guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(id)?api_key=68206fe24af296b2560c51089250d615&language=pt-BR") else {
+              return
+          }
+          URLSession.shared.dataTask(with: url) { data, _, error in
+              DispatchQueue.main.async {
+                  if error == nil {
+                      do {
+                          guard let data = data else {
+                              return
+                          }
+                          
+                          let descriptionMovie = try JSONDecoder().decode(MovieDescription.self, from: data)
+                          movie = descriptionMovie
+                        completion(resultMovieDescription.sucess(movie: movie))
+                      } catch {
+                        if let data = data {
+                            let str = String(data: data, encoding: .utf8)
+                            print("Parse Error3", str as Any, error)
+                        } else {
+                            print("Parse Error3", error)
+                        }
+                      completion(resultMovieDescription.failure(error: Error.parseError(error: "Erro no parse")))
+                      }
+                  }
+              }
+          }.resume()
+      }
 }

@@ -26,14 +26,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func setUpViewTable() {
 
-        self.tableView.register(UINib (nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        self.tableView.register(UINib (nibName: "MovieTableViewCell", bundle: Bundle(for: MovieTableViewCell.self)), forCellReuseIdentifier: "cell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
         }
     
     func cellTapped(movie: Movie) {
-           
+        let movieDescriptionViewModel = MovieDescriptionViewModel(id: movie.id)
+        let movieDescriptionViewController = MovieDescriptionViewController(movieDescriptionViewModel: movieDescriptionViewModel)
+        present(movieDescriptionViewController, animated: true, completion: nil)
        }
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

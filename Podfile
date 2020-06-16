@@ -6,8 +6,14 @@ target 'The_Movie' do
   use_frameworks!
 
   # Pods for The_Movie
-
   pod 'SDWebImage', '~> 5.0'
+  pod 'lottie-ios'
+  pod 'Firebase'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Database'
+  
+
+  
 
   target 'The_MovieTests' do
     inherit! :search_paths
