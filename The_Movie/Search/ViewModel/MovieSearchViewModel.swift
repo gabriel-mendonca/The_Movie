@@ -11,8 +11,26 @@ import UIKit
 
 class MovieSearchViewModel {
     var searchMovie = [MovieSearch]()
-    let service = NetworkServiceSearch()
- 
+    var service = NetworkServiceSearch()
+    
+    init(service: NetworkServiceSearch = NetworkServiceSearch()) {
+        self.service = service
+        searchQuery = ""
+    }
+    
+    var searchQuery: String{
+        didSet {
+           reloadSearch()
+        }
+    }
+    
+    func reloadSearch() {
+        if searchQuery.isEmpty {
+            setupSearchTableView(query: searchQuery)
+        }else {
+            
+        }
+    }
     
     func numberOfSearch() -> Int {
         return searchMovie.count
@@ -24,16 +42,14 @@ class MovieSearchViewModel {
     }
     
     
-    func setupSearchTableView(title: String,completion: @escaping () -> Void) {
-        service.fetchMovieSearch(title: title) { (result) in
+    func setupSearchTableView(query: String) {
+        service.fetchMovieSearch(query: query) { (result) in
             switch result {
             case .sucess(let movie):
                 self.searchMovie = movie
-                completion()
             case .failure:
                 self.handleError()
             }
-            completion()
         }
     }
     

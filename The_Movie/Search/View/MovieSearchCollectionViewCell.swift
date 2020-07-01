@@ -9,12 +9,15 @@
 import UIKit
 
 class MovieSearchCollectionViewCell: UICollectionViewCell {
-
+    
+    @IBOutlet weak var progressLoad: UIActivityIndicatorView!
     @IBOutlet weak var posterImageView: UIImageView!
     
     func image(url: URL?) {
         if let url = url {
-            posterImageView.sd_setImage(with: url)
+            posterImageView.sd_setImage(with: url) { (image, error, _, url) in
+                self.progressLoad.stopAnimating()
+            }
         } else {
             
         }

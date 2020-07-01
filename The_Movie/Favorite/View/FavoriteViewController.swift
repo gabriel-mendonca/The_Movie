@@ -20,12 +20,12 @@ class FavoriteViewController: UIViewController,UICollectionViewDelegateFlowLayou
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        favoriteViewModel.dataMovie {
-            self.setupMovieCollection()
-       }
-        favoriteViewModel.dataSerie {
-            self.setupSerieCollection()
-        }
+//        favoriteViewModel.dataMovie {
+//            self.setupMovieCollection()
+//       }
+//        favoriteViewModel.dataSerie {
+//            self.setupSerieCollection()
+//        }
 
     }
 
@@ -44,6 +44,9 @@ class FavoriteViewController: UIViewController,UICollectionViewDelegateFlowLayou
         favoriteSerieCollection.delegate = self
         favoriteSerieCollection.dataSource = self
         favoriteSerieCollection.register(UINib (nibName: "FavoriteSerieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cellSerie")
+        DispatchQueue.main.async {
+            self.favoriteSerieCollection.reloadData()
+        }
         
     }
 

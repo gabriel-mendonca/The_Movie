@@ -9,26 +9,26 @@
 import UIKit
 import Foundation
 
-class MovieSearchViewController: UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UITextFieldDelegate,MovieSearchCollectionViewDelegate {
+class MovieSearchViewController: UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UITextFieldDelegate,UISearchBarDelegate,MovieSearchCollectionViewDelegate {
     
     var movieSearchViewModel: MovieSearchViewModel = MovieSearchViewModel()
+    var resultRequest: SearchMovieResult?
     weak var delegate: MovieSearchCollectionViewDelegate?
     
-    @IBOutlet weak var titleTable: UITextField!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionViewSearch: UICollectionView!
-    @IBOutlet weak var search: UIButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.titleTable.delegate = self
+        searchBar.delegate = self
        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         setupCollectionView()
+        
         
     }
     
@@ -38,17 +38,31 @@ class MovieSearchViewController: UIViewController,UICollectionViewDelegateFlowLa
         self.collectionViewSearch.register(UINib (nibName: "MovieSearchCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cellid")
     }
     
-    @IBAction func searchFor(_ sender: Any) {
-        
-        movieSearchViewModel.setupSearchTableView(title: titleTable.text ?? "") {
-            DispatchQueue.main.async {
-                 self.collectionViewSearch.reloadData()
-            }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        movieSearchViewModel.searchQuery = searchBar.text ?? ""
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.searchTextField.textColor = .white
+        if searchText.isEmpty {
+            movieSearchViewModel.searchQuery = searchText
+            resultRequest?.results.removeAll()
+        } else {
+            movieSearchViewModel.setupSearchTableView(query: searchText)
+            collectionViewSearch.reloadData()
         }
     }
     
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        movieSearchViewModel.setupSearchTableView(title: titleTable.text ?? "") {
+//    @IBAction func searchFor(_ sender: Any) {
+//        movieSearchViewModel.setupSearchTableView(query: titleTable.text ?? "") {
+//            DispatchQueue.main.async {
+//                 self.collectionViewSearch.reloadData()
+//            }
+//        }
+//    }
+    
+//    func textFieldShouldReturn(_ textField: UITextField, collectionView: UICollectionView) -> Bool {
+//        movieSearchViewModel.setupSearchTableView(query: titleTable.text ?? "") {
 //            DispatchQueue.main.async {
 //                 self.collectionViewSearch.reloadData()
 //            }
@@ -80,9 +94,7 @@ class MovieSearchViewController: UIViewController,UICollectionViewDelegateFlowLa
       }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = 125
-        let widht = 100
-        return CGSize(width: widht, height: height)
+        return CGSize(width: (collectionView.frame.width / 3)-4, height: 170)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -90,27 +102,6 @@ class MovieSearchViewController: UIViewController,UICollectionViewDelegateFlowLa
         cellTapped(movie: movieSearchViewModel.searchMovie[indexPath.row])
         
     }
-        
-        
-        
-        
-        
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return movieSearchViewModel.numberOfSearch()
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieSearchCollectionViewCell
-//        cell.image(url: movieSearchViewModel.getSearch(at: indexPath.row))
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 170
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//    }
 }
+
 

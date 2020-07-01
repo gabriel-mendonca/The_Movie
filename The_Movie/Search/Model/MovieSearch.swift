@@ -10,10 +10,11 @@ import Foundation
 
 
 struct SearchMovieResult: Decodable {
-    let results: [MovieSearch]
+    var results: [MovieSearch]
 }
 
 struct MovieSearch: Decodable,ConvertPosterLink {
+    
     let title: String?
     let posterPath: String?
     let id: Int

@@ -16,9 +16,10 @@ enum resultMovieSearch {
 
 class NetworkServiceSearch {
     
-    func fetchMovieSearch(title: String, completion: @escaping( _ result: resultMovieSearch) -> Void) {
+    func fetchMovieSearch(query: String, completion: @escaping( _ result: resultMovieSearch) -> Void) {
         var movieSearch = [MovieSearch]()
-        guard let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=68206fe24af296b2560c51089250d615&query=\(title)") else {
+        
+        guard let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=68206fe24af296b2560c51089250d615&language=en-US&query=\(query)") else {
             return
         }
         URLSession.shared.dataTask(with: url) { (data, _, error) in
@@ -28,7 +29,6 @@ class NetworkServiceSearch {
                         guard let data = data else {return}
 
                         let movies = try JSONDecoder().decode(SearchMovieResult.self, from: data)
-                        print(movies)
                         movieSearch = movies.results
                         completion(resultMovieSearch.sucess(movieSearch: movieSearch))
                     } catch {

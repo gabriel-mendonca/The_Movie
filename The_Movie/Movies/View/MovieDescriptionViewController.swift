@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import SDWebImage
-import Lottie
+//import Lottie
 
 class MovieDescriptionViewController: UIViewController {
     
@@ -24,7 +24,7 @@ class MovieDescriptionViewController: UIViewController {
     @IBOutlet weak var evaluation: UILabel!
     @IBOutlet weak var ageRange: UIImageView!
     @IBOutlet weak var more: RoundedButton!
-    @IBOutlet private var animation: AnimationView!
+//    @IBOutlet private var animation: AnimationView!
     
     
     var isFavorite: Bool = false
@@ -41,17 +41,17 @@ class MovieDescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.more.setUpView()
-        animation.play(fromFrame: 0, toFrame: 32)
+//        animation.play(fromFrame: 0, toFrame: 32)
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        movieDescriptionViewModel.data {
-            self.isFavorite = self.movieDescriptionViewModel.isFavorite
-            self.animationFavorites()
-
-        }
+//        movieDescriptionViewModel.data {
+//            self.isFavorite = self.movieDescriptionViewModel.isFavorite
+//            self.animationFavorites()
+//
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +69,7 @@ class MovieDescriptionViewController: UIViewController {
     }
     
     func animationFavorites() {
-         self.animation.play(fromFrame: 33, toFrame: 65)
+//         self.animation.play(fromFrame: 33, toFrame: 65)
     }
     
     @IBAction func clickAnimation(_ sender: Any) {
@@ -77,15 +77,15 @@ class MovieDescriptionViewController: UIViewController {
     }
 
     func animationFavoritesClick(isFavorite: Bool) {
-        if isFavorite {
-            animation.play(fromFrame: 80, toFrame: 110, loopMode: .playOnce) { _ in
-            self.animation.play(fromFrame: 5, toFrame: 32)
-            self.movieDescriptionViewModel.delete()
-            }
-            }else {
-            animation.play(fromFrame: 33, toFrame: 65)
-            movieDescriptionViewModel.post()
-        }
+//        if isFavorite {
+//            animation.play(fromFrame: 80, toFrame: 110, loopMode: .playOnce) { _ in
+//            self.animation.play(fromFrame: 5, toFrame: 32)
+//            self.movieDescriptionViewModel.delete()
+//            }
+//            }else {
+//            animation.play(fromFrame: 33, toFrame: 65)
+//            movieDescriptionViewModel.post()
+//        }
         self.isFavorite.toggle()
     }
     

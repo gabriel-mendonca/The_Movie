@@ -19,10 +19,20 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qVX-Du-bGn">
                         <rect key="frame" x="0.0" y="0.0" width="110" height="104"/>
                     </imageView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="PVQ-81-2xZ">
+                        <rect key="frame" x="40" y="37" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="kYW-vm-yvb"/>
+                            <constraint firstAttribute="width" constant="30" id="zpk-oE-L3E"/>
+                        </constraints>
+                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="PVQ-81-2xZ" firstAttribute="centerY" secondItem="QED-ds-HFA" secondAttribute="centerY" id="8Qq-6A-4vI"/>
                     <constraint firstItem="qVX-Du-bGn" firstAttribute="leading" secondItem="QED-ds-HFA" secondAttribute="leading" id="MXS-cb-1Jk"/>
                     <constraint firstItem="qVX-Du-bGn" firstAttribute="top" secondItem="QED-ds-HFA" secondAttribute="top" id="dha-4W-aQQ"/>
+                    <constraint firstItem="PVQ-81-2xZ" firstAttribute="centerX" secondItem="QED-ds-HFA" secondAttribute="centerX" id="fzm-xq-8hH"/>
                     <constraint firstAttribute="trailing" secondItem="qVX-Du-bGn" secondAttribute="trailing" id="gAS-T6-YRr"/>
                     <constraint firstAttribute="bottom" secondItem="qVX-Du-bGn" secondAttribute="bottom" id="pke-rB-3vs"/>
                 </constraints>
@@ -31,6 +41,7 @@
             <size key="customSize" width="110" height="104"/>
             <connections>
                 <outlet property="poster" destination="qVX-Du-bGn" id="Bb6-p6-VOU"/>
+                <outlet property="progressLoad" destination="PVQ-81-2xZ" id="JZo-4n-nCc"/>
             </connections>
             <point key="canvasLocation" x="191.30434782608697" y="75"/>
         </collectionViewCell>

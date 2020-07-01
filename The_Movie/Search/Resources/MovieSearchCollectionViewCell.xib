@@ -16,6 +16,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="146" height="125"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="evL-PF-Kva">
+                        <rect key="frame" x="58" y="47.5" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="o3M-co-FNN"/>
+                            <constraint firstAttribute="width" constant="30" id="oAo-Id-g1s"/>
+                        </constraints>
+                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </activityIndicatorView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bfl-EJ-Bmj">
                         <rect key="frame" x="0.0" y="0.0" width="146" height="125"/>
                     </imageView>
@@ -23,6 +31,8 @@
             </view>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Bfl-EJ-Bmj" secondAttribute="bottom" id="DbV-x3-qRM"/>
+                <constraint firstItem="evL-PF-Kva" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="E7f-cM-smF"/>
+                <constraint firstItem="evL-PF-Kva" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="PcK-Qg-UNF"/>
                 <constraint firstItem="Bfl-EJ-Bmj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="c2w-X4-AOj"/>
                 <constraint firstAttribute="trailing" secondItem="Bfl-EJ-Bmj" secondAttribute="trailing" id="ed5-Fw-Fzi"/>
                 <constraint firstItem="Bfl-EJ-Bmj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fLg-b9-jZy"/>
@@ -31,6 +41,7 @@
             <size key="customSize" width="146" height="136"/>
             <connections>
                 <outlet property="posterImageView" destination="Bfl-EJ-Bmj" id="A0e-rD-9h1"/>
+                <outlet property="progressLoad" destination="evL-PF-Kva" id="Jlh-lP-T7m"/>
             </connections>
             <point key="canvasLocation" x="68.115942028985515" y="81.026785714285708"/>
         </collectionViewCell>

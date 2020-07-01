@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Firebase
+//import Firebase
 
 class SerieDescriptionViewModel {
     
@@ -31,36 +31,36 @@ class SerieDescriptionViewModel {
         }
     }
     
-        func post() {
-            guard let poster = serieDescription?.posterPath else { return }
-            let posterPath = "https://image.tmdb.org/t/p/original/\(poster)"
-            let id = serieDescription?.id
-            let title = serieDescription?.name
-            let isFavorite = true
-    
-            let post: [String: AnyObject] = [ "posterPath": posterPath as AnyObject, "id": id as AnyObject, "isFavorite": isFavorite as AnyObject]
-    
-                let dbReference = Database.database().reference()
-            dbReference.child("Series").child(title ?? "").setValue(post)
-    
-            }
-        
-        func delete() {
-            let title = serieDescription?.name
-            let dbReference = Database.database().reference()
-            dbReference.child("Series").child(title ?? "").removeValue()
-        }
-    
-        func data(completion : @escaping () -> Void) {
-            let title = serieDescription?.name
-                let dbReference = Database.database().reference()
-                dbReference.child("Series/\(title ?? "")/isFavorite").observe(.value) {(snaphot: DataSnapshot) in
-                    if let values = snaphot.value as? Bool {
-                        self.isFavorite = values
-                        completion()
-                    }
-                }
-        }
+//        func post() {
+//            guard let poster = serieDescription?.posterPath else { return }
+//            let posterPath = "https://image.tmdb.org/t/p/original/\(poster)"
+//            let id = serieDescription?.id
+//            let title = serieDescription?.name
+//            let isFavorite = true
+//    
+//            let post: [String: AnyObject] = [ "posterPath": posterPath as AnyObject, "id": id as AnyObject, "isFavorite": isFavorite as AnyObject]
+//    
+//                let dbReference = Database.database().reference()
+//            dbReference.child("Series").child(title ?? "").setValue(post)
+//    
+//            }
+//        
+//        func delete() {
+//            let title = serieDescription?.name
+//            let dbReference = Database.database().reference()
+//            dbReference.child("Series").child(title ?? "").removeValue()
+//        }
+//    
+//        func data(completion : @escaping () -> Void) {
+//            let title = serieDescription?.name
+//                let dbReference = Database.database().reference()
+//                dbReference.child("Series/\(title ?? "")/isFavorite").observe(.value) {(snaphot: DataSnapshot) in
+//                    if let values = snaphot.value as? Bool {
+//                        self.isFavorite = values
+//                        completion()
+//                    }
+//                }
+//        }
     
     func handleError() {}
     

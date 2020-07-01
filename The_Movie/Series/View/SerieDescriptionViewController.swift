@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import Lottie
+//import Lottie
 
 class SerieDescriptionViewController: UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {
 
@@ -25,23 +25,23 @@ class SerieDescriptionViewController: UIViewController,UICollectionViewDelegateF
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var posterPath: UIImageView!
     @IBOutlet weak var backdropPath: UIImageView!
-    @IBOutlet private var animation: AnimationView!
+//    @IBOutlet private var animation: AnimationView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         animationFavorites()
         configButton()
         setupCollectionView()
-        animation.play(fromFrame: 0, toFrame: 32)
+//        animation.play(fromFrame: 0, toFrame: 32)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        serieDescriptionViewModel.data {
-            self.isFavorite = self.serieDescriptionViewModel.isFavorite
-            self.animationFavorites()
-        }
+//        serieDescriptionViewModel.data {
+//            self.isFavorite = self.serieDescriptionViewModel.isFavorite
+//            self.animationFavorites()
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,20 +95,20 @@ class SerieDescriptionViewController: UIViewController,UICollectionViewDelegateF
         }
     
         func animationFavoritesClick(isFavorite: Bool) {
-            if isFavorite {
-                animation.play(fromFrame: 80, toFrame: 110, loopMode: .playOnce) { _ in
-                    self.animation.play(fromFrame: 5, toFrame: 32)
-                    self.serieDescriptionViewModel.delete()
-                }
-            } else {
-                animation.play(fromFrame: 33, toFrame: 65)
-                serieDescriptionViewModel.post()
-            }
+//            if isFavorite {
+//                animation.play(fromFrame: 80, toFrame: 110, loopMode: .playOnce) { _ in
+//                    self.animation.play(fromFrame: 5, toFrame: 32)
+//                    self.serieDescriptionViewModel.delete()
+//                }
+//            } else {
+//                animation.play(fromFrame: 33, toFrame: 65)
+//                serieDescriptionViewModel.post()
+//            }
             self.isFavorite.toggle()
         }
         
         func animationFavorites() {
-            self.animation.play(fromFrame: 33, toFrame: 65)
+//            self.animation.play(fromFrame: 33, toFrame: 65)
         }
     
     func starEvaluation(nota: Float?) {

@@ -12,11 +12,14 @@ import SDWebImage
 
 class MovieCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var progressLoad: UIActivityIndicatorView!
     @IBOutlet weak var poster: UIImageView!
     
     func image(url: URL?) {
         if let url = url {
-            poster.sd_setImage(with: url, completed: nil)
+            poster.sd_setImage(with: url) { (image, error, _, url) in
+                self.progressLoad.stopAnimating()
+            }
         } else {
             
         }

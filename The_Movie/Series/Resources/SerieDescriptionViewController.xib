@@ -9,7 +9,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SerieDescriptionViewController" customModule="The_Movie" customModuleProvider="target">
             <connections>
-                <outlet property="animation" destination="PfU-x1-eYR" id="wuk-nJ-0KA"/>
                 <outlet property="backdropPath" destination="NBb-3Z-N9Z" id="G2V-n3-sPt"/>
                 <outlet property="collectionViewSeasons" destination="GBV-7e-VqF" id="gEA-tz-I0H"/>
                 <outlet property="episodeTime" destination="X5j-I2-8Es" id="Ndn-82-w4p"/>
@@ -102,14 +101,11 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfU-x1-eYR" customClass="AnimationView" customModule="Lottie">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfU-x1-eYR">
                                     <rect key="frame" x="258" y="260.5" width="86" height="68"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9z-3R-68M">
                                             <rect key="frame" x="0.0" y="0.0" width="86" height="68"/>
-                                            <connections>
-                                                <action selector="clickAnimation:" destination="-1" eventType="touchUpInside" id="QTm-uU-CIa"/>
-                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
